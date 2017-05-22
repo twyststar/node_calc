@@ -41,6 +41,7 @@ gulp.task('serve', function() {
   });
   gulp.watch(['js/*.js'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
+  gulp.watch(['*.html'], ['htmlBuild']);
 });
 
 gulp.task('bowerBuild', ['bower'], function(){
@@ -91,4 +92,8 @@ gulp.task('jshint', function(){
   return gulp.src(['js/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
+});
+
+gulp.task('htmlBuild', function() {
+  browserSync.reload();
 });

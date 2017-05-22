@@ -10,13 +10,24 @@ $(document).ready(function() {
       $('#solution').append("<li>" + element + "</li>");
     });
   });
+  $("form#calculator").submit(function(event) {
+      event.preventDefault();
+      var a = parseInt($("#input1").val());
+      var b = parseInt($("#input2").val());
+      var simpleCalculator = new Calculator("hot pink");
+      var operator = $("input:radio[name=operator]:checked").val();
+      var result;
+      if (operator === "add"){
+        var output = simpleCalculator.add(a,b);
+      } else if (operator === "subtract"){
+        var output = simpleCalculator.subtract(a,b);
+      } else if (operator === "multiply"){
+        var output = simpleCalculator.multiply(a,b);
+      } else if (operator = "divide"){
+        var output = simpleCalculator.divide(a,b);
+      }
+      $('#output').text(output);
 
-  $('#add-form').submit(function(event) {
-    event.preventDefault();
-    var a = parseInt($('#a').val());
-    var b = parseInt($('#b').val());
-    var simpleCalculator = new Calculator("hot pink");
-    var output = simpleCalculator.add(a,b);
-    $('#solution').text(output);
-  });
+    });
+
 });
